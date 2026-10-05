@@ -1,5 +1,7 @@
 # Поиск по документам
 
+[![Тесты](https://github.com/AndrMiAl/document-search-api/actions/workflows/tests.yml/badge.svg)](https://github.com/AndrMiAl/document-search-api/actions/workflows/tests.yml)
+
 Асинхронный поисковый сервис для корпуса из 1500 текстовых документов. Запрос ищется в Elasticsearch, а найденные записи и их поля возвращаются из PostgreSQL. Веб-интерфейс позволяет искать документы и удалять отдельные записи.
 
 ## Стек
