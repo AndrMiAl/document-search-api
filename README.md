@@ -10,15 +10,17 @@ Python 3.12 · FastAPI · SQLAlchemy Async · PostgreSQL · Elasticsearch · Doc
 
 ## Запуск
 
-Нужен Docker Desktop с Docker Compose. В корне проекта выполни:
+Требуется Docker Desktop с Docker Compose v2.
 
 ```powershell
 docker compose up --build
 ```
 
-Когда в логах появится `Application startup complete`, открой [http://localhost:8000](http://localhost:8000). При первом запуске сервис создаёт схему и загружает `data/posts.csv`. При следующих стартах Elasticsearch перестраивается из текущих данных PostgreSQL; удалённые документы не возвращаются из CSV.
+Веб-интерфейс: [http://localhost:8000](http://localhost:8000).
 
-Остановить контейнеры можно сочетанием `Ctrl+C` или командой `docker compose down`. Данные хранятся в Docker volumes. `docker compose down -v` дополнительно удаляет эти данные.
+При первом старте API создаёт схему и загружает `data/posts.csv`. При следующих стартах индекс Elasticsearch восстанавливается из PostgreSQL, поэтому удалённые документы не появляются снова. Данные хранятся в Docker volumes; `docker compose down -v` удаляет их вместе с контейнерами.
+
+Остановка: `Ctrl+C` или `docker compose down`.
 
 ## Возможности
 
@@ -38,8 +40,6 @@ docker compose up --build
 | `DELETE` | `/documents/{id}` | Удалить документ |
 | `GET` | `/health` | Проверить доступность сервиса |
 | `GET` | `/docs.json` | Получить схему OpenAPI в JSON |
-
-Интерфейс поиска: [http://localhost:8000](http://localhost:8000).
 
 Пример добавления документа:
 
