@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Atlas Search — поиск документов</title>
+    <link rel="stylesheet" href="/static/styles.css?v=4" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">A</div>
+          <div>
+            <strong>Atlas</strong>
+            <span>Document search</span>
+          </div>
+        </div>
+
+        <nav class="nav" aria-label="Основная навигация">
+          <a class="nav-item active" href="#search"><span class="nav-icon">⌕</span>Поиск</a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="system-status"><span class="status-dot"></span><span>Сервис онлайн</span></div>
+          <a href="/docs" target="_blank" rel="noreferrer" class="api-link">Открыть API docs <span>↗</span></a>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Коллекция документов</p>
+            <h1>Поиск документов</h1>
+          </div>
+        </header>
+
+        <section class="search-panel" id="search">
+          <div class="search-copy">
+            <span class="section-kicker">Полнотекстовый поиск</span>
+            <h2>Поиск по содержимому документов</h2>
+            <p>Введите слово или фразу из документа. В выдаче будет до 20 совпадений, начиная с самых новых.</p>
+          </div>
+          <form class="search-form" id="search-form">
+            <label class="sr-only" for="search-input">Поисковый запрос</label>
+            <span class="search-symbol" aria-hidden="true">⌕</span>
+            <input id="search-input" type="search" placeholder="Например, асинхронный Python" autocomplete="off" />
+            <button type="submit">Искать <span>↵</span></button>
+          </form>
+          <div class="search-meta"><span id="result-count">Загрузка коллекции...</span><span class="shortcut">до 20 результатов · по дате создания</span></div>
+        </section>
+
+        <section class="results-section" aria-live="polite">
+          <div class="section-heading">
+            <div>
+              <span class="section-kicker">Результаты</span>
+              <h2 id="results-title">Последние документы</h2>
+            </div>
+            <button class="text-button" id="clear-results" type="button" hidden>Очистить поиск</button>
+          </div>
+          <div class="results-list" id="results-list">
+            <div class="empty-state">
+              <div class="empty-icon">⌕</div>
+              <h3>Загрузка документов</h3>
+              <p>Последние документы появятся здесь.</p>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="/static/app.js?v=4"></script>
+  </body>
+</html>
