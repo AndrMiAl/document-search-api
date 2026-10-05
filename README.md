@@ -13,10 +13,6 @@ docker compose up --build
 После запуска:
 
 - Интерфейс поисковика: <http://localhost:8000/>
-- API: <http://localhost:8000>
-- Swagger UI: <http://localhost:8000/docs>
-- OpenAPI JSON: <http://localhost:8000/docs.json>
-- Elasticsearch: <http://localhost:9200>
 
 При первом запуске Docker сам создаёт таблицу, загружает 1500 документов из `data/posts.csv` и строит поисковый индекс. Подождите, пока в логах API появится `Готово документов в поисковом индексе: 1500`, затем откройте <http://localhost:8000/>. В следующих запусках CSV повторно не загружается, а поисковый индекс восстанавливается из PostgreSQL.
 
@@ -36,6 +32,8 @@ docker compose run --rm api python -m scripts.import_csv /service/data/posts.csv
 Скрипт обновляет записи с уже существующими ID, добавляет новые и пакетно синхронизирует Elasticsearch. Повторный запуск безопасен. Настройки подключения берутся из `DATABASE_URL`, `ELASTICSEARCH_URL` и `ELASTICSEARCH_INDEX`.
 
 ## API
+
+Интерактивная документация скрыта, чтобы при открытии проекта пользователь попадал сразу в поисковый интерфейс. Схема API доступна в формате JSON по адресу `GET /docs.json`.
 
 ### Добавить документы
 

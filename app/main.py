@@ -45,6 +45,8 @@ app = FastAPI(
     description="Асинхронный полнотекстовый поиск документов с хранением в PostgreSQL и индексом Elasticsearch.",
     version="1.0.0",
     openapi_url="/docs.json",
+    docs_url=None,
+    redoc_url=None,
     lifespan=lifespan,
 )
 app.mount("/static", StaticFiles(directory="app/static"), name="static")

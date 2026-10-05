@@ -116,6 +116,14 @@ async def test_openapi_is_served_at_requested_path(client):
 
 
 @pytest.mark.asyncio
+async def test_interactive_api_documentation_is_hidden(client):
+    test_client, _, _ = client
+
+    assert (await test_client.get("/docs")).status_code == 404
+    assert (await test_client.get("/redoc")).status_code == 404
+
+
+@pytest.mark.asyncio
 async def test_add_documents_persists_and_indexes_documents(client):
     test_client, index, session_factory = client
     response = await test_client.post(
